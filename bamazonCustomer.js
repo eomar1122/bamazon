@@ -75,7 +75,7 @@ function placeOrder() {
         }
     ]).then(function (userInput) {
         // Read from the products table with specific ID
-        connection.query('SELECT * FROM products WHERE item_id = ?', [userInput.pickedId], function (err, res) {
+        connection.query('SELECT * FROM products WHERE ?', { item_id: userInput.pickedId }, function (err, res) {
             if (userInput.pickedQuantity > res[0].stock_quantity) {
                 console.log(`-----------------------------------`);
                 console.log(`\nInsufficient quantity!\n`);
