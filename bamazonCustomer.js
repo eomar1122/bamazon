@@ -52,27 +52,30 @@ function showAll() {
 
 // Place an order function by asking user to enter some information
 function placeOrder() {
-    inquirer.prompt([{
-        name: 'pickedId',
-        message: 'Please enter the ID for the item you would like to purshase?',
-        validate: function (value) {
-            var valid = value.match(/^[0-9]+$/)
-            if (valid) {
-                return true
+    inquirer.prompt([
+        {
+            name: 'pickedId',
+            message: 'Please enter the ID for the item you would like to purshase?',
+            validate: function (value) {
+                // var valid = value.match(/^[0-9]+$/)
+                if (isNaN(value) === false) {
+                    return true
+                }
+                return 'Please enter a valid product ID!'
             }
-            return 'Please enter a valid product ID!'
-        }
-    }, {
-        name: 'pickedQuantity',
-        message: 'How many of this product would you like to order?',
-        validate: function (value) {
-            var valid = value.match(/^[0-9]+$/)
-            if (valid) {
-                return true
+        },
+        {
+            name: 'pickedQuantity',
+            message: 'How many of this product would you like to order?',
+            validate: function (value) {
+                // var valid = value.match(/^[0-9]+$/)
+                if (isNaN(value) === false) {
+                    return true
+                }
+                return 'Please enter a number'
             }
-            return 'Please enter a number'
         }
-    }]).then(function (userInput) {
+    ]).then(function (userInput) {
         // Read from the products table with specific ID
         connection.query('SELECT * FROM products WHERE item_id = ?', [userInput.pickedId], function (err, res) {
             if (userInput.pickedQuantity > res[0].stock_quantity) {
