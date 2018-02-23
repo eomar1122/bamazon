@@ -57,7 +57,6 @@ function placeOrder() {
             name: 'pickedId',
             message: 'Please enter the ID for the item you would like to purshase?',
             validate: function (value) {
-                // var valid = value.match(/^[0-9]+$/)
                 if (isNaN(value) === false) {
                     return true
                 }
@@ -68,7 +67,6 @@ function placeOrder() {
             name: 'pickedQuantity',
             message: 'How many of this product would you like to order?',
             validate: function (value) {
-                // var valid = value.match(/^[0-9]+$/)
                 if (isNaN(value) === false) {
                     return true
                 }
