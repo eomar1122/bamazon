@@ -1,7 +1,5 @@
 # bamazon
 
-BamazonCustomer.js video: (https://youtu.be/legfxCMskbg)
-
 The goal was to create an Amazon-like store front using Node.js and MySQL. 
 
 ## How it works? 
